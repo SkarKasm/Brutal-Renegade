@@ -60,6 +60,10 @@ Build the OpenXR bridge separately from Code/RenegadeVR. RVR_OPENXR_SDK_DIR sele
 
 The matching release source archive and executable build ledger accompany Alpha V0.052. The version counts distinct retained deployed executable builds.
 
+## Support development
+
+If you would like to support Brutal Renegade, [buy me a coffee](https://buymeacoffee.com/mrskarkasm).
+
 ## Credits and licence
 
 Based on Electronic Arts' released Command & Conquer: Renegade source. Preserve the GPL v3 licence and additional terms in [LICENSE.md](LICENSE.md). Original source information remains in [README-UPSTREAM.md](README-UPSTREAM.md).
