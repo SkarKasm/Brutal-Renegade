@@ -1,0 +1,4 @@
+d3d8.h, d3d8types.h, d3d8caps.h come from the Wine project (via mingw-w64 / llvm-mingw),
+Copyright (C) 2002 Jason Edmeades and others, licensed under the GNU LGPL 2.1 or later
+(see the header comments). The DirectX 8 SDK headers Renegade was written against are not
+redistributable; these are API-compatible replacements.

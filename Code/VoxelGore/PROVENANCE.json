@@ -1,0 +1,40 @@
+{
+  "reference_commit": "3aca3fc0944bdd680fac1f98cb09521b7c64899d",
+  "files": [
+    {
+      "source": "D:\\rtcwvr\\rtcwvr-build-1031\\code\\cgame\\cg_gore.cpp",
+      "source_sha256": "561f1128d89162e3123732b7cd5c7244ba8d4574d7052fcb523cb63c27601c0e",
+      "destination": "reference/cg_gore.cpp",
+      "change": "METRES=1, head brain depth >=3cm, optional limb-scoped carve and wound-mesh inputs. Optional leg grouping for independent severing connectivity. Incremental skin rebuilds, adaptive boundary subdivision, and darker wound colors. Shared rebuild scratch and template data, body compaction support, and expanded slot counts.",
+      "destination_sha256": "18abb06f7ddbc349b89173a8f08189038c51be588eddd4aba8f01840c1edb063"
+    },
+    {
+      "source": "D:\\rtcwvr\\rtcwvr-build-1031\\code\\cgame\\cg_gore.h",
+      "source_sha256": "1cffe4ca6df30a674b106cb15ff5f57d5d1b3bacd5dbf956d126f06f75542ab2",
+      "destination": "reference/cg_gore.h",
+      "change": "Optional limb-scoped carve and wound-mesh inputs. Optional leg grouping for independent severing connectivity.",
+      "destination_sha256": "5e3866b4486192a45aa698da76af425831d1f1036c280b89f01b5d8e193c55aa"
+    },
+    {
+      "source": "D:\\rtcwvr\\rtcwvr-build-1031\\code\\qcommon\\vr_gore.h",
+      "source_sha256": "b5d6adb7be420a97597f27efd1d746c496a4725fb3d9c72a690fd01787e870e0",
+      "destination": "qcommon/vr_gore.h",
+      "change": "none",
+      "destination_sha256": "d964b7f0f6d8feb89c26afdb4d2c49950821669bc4998d6ef750567b63d061c5"
+    },
+    {
+      "source": "D:\\Command & Conquer Renegade(tm)\\Renegade Code\\CnC_Renegade-main\\voxel_gore_handoff\\core\\gorecore.h",
+      "destination": "gore/gorecore.h",
+      "sha256": "f9ce8b1d92fc8b565579708e5f3e9183dfb80368d5c03ffa6d12672cb3f274ff",
+      "change": "Renegade copy exposes optional limb-scoped carve and wound-mesh inputs. Optional leg grouping for independent severing connectivity. Mutable occupancy copies share immutable bone and depth data.",
+      "destination_sha256": "3f5b6582079a4eaa64038e3b3e07db6675c674beb9612187a592706413f473f6"
+    },
+    {
+      "source": "D:\\Command & Conquer Renegade(tm)\\Renegade Code\\CnC_Renegade-main\\voxel_gore_handoff\\core\\gorecore.cpp",
+      "destination": "gore/gorecore.cpp",
+      "sha256": "ade25c49484f4cf503ba67ed18a90d140b2dc6e3952bd7f80164e658ee1b9da0",
+      "change": "Renegade copy adds optional limb-restricted carving and wound-wall grouping. Default unscoped path retained. Optional leg grouping for independent severing connectivity. Skip empty cells in wound-wall remeshing. Mutable occupancy copies share immutable bone and depth data.",
+      "destination_sha256": "c8b7db6fa85e3ed45e4934ef8ab0547c71f15a86abe2cb37ee755898e6e808bc"
+    }
+  ]
+}

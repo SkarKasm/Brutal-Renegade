@@ -1,0 +1,4 @@
+mss.h is from TheSuperHackers/miles-sdk-stub (https://github.com/TheSuperHackers/miles-sdk-stub),
+GPL v3 or later (LICENSE in this folder): a header for the subset of the Miles Sound System 6
+API used by Renegade and Generals. The game links against its own Mss32.dll through an import
+library built from Port/importlibs/mss32.def.

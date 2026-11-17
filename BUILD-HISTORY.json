@@ -1,0 +1,402 @@
+[
+  {
+    "iteration": 1,
+    "sha256": "70beabc02c3207808bcdedc7369488fd40d3effb9ee4a69f2742f16637a295b8",
+    "evidence": [
+      "Brutal Renegade v0.1.zip::Renegade.exe",
+      "Brutal Renegade v0.1\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 2,
+    "sha256": "dcf957eea09551c0650f2878b21be6cde5ff0024005c697e7e08b5644a60ed5c",
+    "evidence": [
+      "RenegadeVR Tools\\fixes-2026-10-20\\before\\test\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 3,
+    "sha256": "e4e604be3161227638f7593e84601a041873f0ec40f008e23766d946a682d61e",
+    "evidence": [
+      "RenegadeVR Tools\\procedural-gore-2026-10-21\\before\\test\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 4,
+    "sha256": "8fe76af29f1f9b861d24ccc1a10ec5548008d3a8de21e7ecaef290b3c6d9ca19",
+    "evidence": [
+      "RenegadeVR Tools\\aim-assist-2026-10-21\\before\\test\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 5,
+    "sha256": "61866673c60c679921758cfb391ce5f6842e2355b349d1c619a64123bc9c3aef",
+    "evidence": [
+      "RenegadeVR Tools\\corpses-and-textures-2026-10-21\\before\\test\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 6,
+    "sha256": "db3a13c47bba891dd4cfd16635d7afb4c0be73c160bcd0d3d52c47d41f17dc30",
+    "evidence": [
+      "RenegadeVR Tools\\geometry-upgrade-2026-10-21\\before\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 7,
+    "sha256": "f6fbc4142bc5f74e1541600791aedff0974685c8358cd4b2d3013cc1cfce3a50",
+    "evidence": [
+      "RenegadeVR Tools\\character-upgrade-2026-10-21\\before\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 8,
+    "sha256": "24cdfd24d4cb3a1e4549178a4ea170dfa078664d907513533d2ee63efb5bd43f",
+    "evidence": [
+      "RenegadeVR Tools\\special-damage-2026-10-21\\before\\game\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 9,
+    "sha256": "0731aa4960a8ed17e01a4f2e42f306da531bd575c1e27ce845e452275f41f276",
+    "evidence": [
+      "RenegadeVR Tools\\vr-body-eva-2026-10-21\\before\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 10,
+    "sha256": "6e864f1f26afef14337cab2b70cb6a8d91058f3302dde9e892677bcc767cdbcd",
+    "evidence": [
+      "RenegadeVR Tools\\mutant-crash-2026-10-22\\before\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 11,
+    "sha256": "c7865963957651f1e316f4f3bb3be2f6e4aa2c0e39b5bb9ea0c4d311c6b5e9b9",
+    "evidence": [
+      "Brutal Renegade - 2026-10-22 Snapshot.zip::Game/Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 12,
+    "sha256": "e09905850b25b410a1be8963e736fcc4b4f69a45173e684263cd1b743970d059",
+    "evidence": [
+      "RenegadeVR Tools\\command-gameplay-fix-2026-10-22\\before\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\command-gameplay-fix-2026-10-22\\before\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 13,
+    "sha256": "4050d8379d71aed567e9cce035add4fd38266ef8a63da475126db5205186191e",
+    "evidence": [
+      "RenegadeVR Tools\\localized-burns-2026-10-22\\before\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\localized-burns-2026-10-22\\before\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 14,
+    "sha256": "7b42a96e86dc388c1ba94a44e90b44f6cfc01f758c9799a05b5f26597f1709ba",
+    "evidence": [
+      "RenegadeVR Tools\\command-recovery-2026-10-23\\before\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\command-recovery-2026-10-23\\before\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 15,
+    "sha256": "fcaf059bbf9aa09ed2e25942ec3a017ceb83562bd47aa87da1fa6916c4895bc8",
+    "evidence": [
+      "RenegadeVR Tools\\gore-tunnel-skinning-2026-10-23\\before\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\gore-tunnel-skinning-2026-10-23\\before\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 16,
+    "sha256": "006abbf994b7af4f9a79ae99711702cb9ad803ce5b01066247d186f9d3e56d02",
+    "evidence": [
+      "RenegadeVR Tools\\gore-through-cavities-2026-10-23\\before\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\gore-through-cavities-2026-10-23\\before\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 17,
+    "sha256": "2a4bd41545a96d33babc437324044fa1ad95dc5e7978072abb75e7b7ee77a95b",
+    "evidence": [
+      "RenegadeVR Tools\\thermal-remains-2026-10-23\\before\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\thermal-remains-2026-10-23\\before\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 18,
+    "sha256": "cfbd83499ce55e83bff2eddad9537a6136ab2cf44616ea4e19be6f3349388e97",
+    "evidence": [
+      "RenegadeVR Tools\\terrain-completion-2026-10-23\\before\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\terrain-completion-2026-10-23\\before\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 19,
+    "sha256": "f935c16f04d25e8aca838faaf1d3d90af8a56c41d58a42cb62b87fad4db1a0bf",
+    "evidence": [
+      "RenegadeVR Tools\\gore-validation-2026-10-23\\before\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\gore-validation-2026-10-23\\before\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 20,
+    "sha256": "237136151d85f035dfd1534d0645e882d4cfcf11da557a1634df4a0a9c8fec7d",
+    "evidence": [
+      "RenegadeVR Tools\\burn-surface-review-2026-10-23\\before\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\burn-surface-review-2026-10-23\\before\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 21,
+    "sha256": "1c2546f249c36dbea846cba614b349490209598accb902501abdb37c25106748",
+    "evidence": [
+      "RenegadeVR Tools\\thermal-system-2026-10-23\\before\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\thermal-system-2026-10-23\\deployment-backup-20261024-124319\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 22,
+    "sha256": "40eecd461ac2cb76ffc4a58bdfb38115af98c595a770f8abe7b89b82f98bdb4d",
+    "evidence": [
+      "RenegadeVR Tools\\thermal-system-2026-10-23\\deployment-backup-20261024-124319\\RenegadeVR Test\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 23,
+    "sha256": "77c6dca920392a78ba742e68b376d344178ef8ef0071b6dd51644e25a4da43e1",
+    "evidence": [
+      "RenegadeVR Tools\\thermal-system-2026-10-23\\cavity-deployment-backup-20261024-130813\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\thermal-system-2026-10-23\\cavity-deployment-backup-20261024-130813\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 24,
+    "sha256": "48ad509ede785025f784b0acfde66543d9ba3ab01d75c63f72d2c2080533bf7e",
+    "evidence": [
+      "RenegadeVR Tools\\thermal-system-2026-10-23\\ragged-cavity-deployment-backup-20261024-133142\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\thermal-system-2026-10-23\\ragged-cavity-deployment-backup-20261024-133142\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 25,
+    "sha256": "be3d4998465202843c29e52f19ee7d4017ccaf5e6bfde10273dca93705f01835",
+    "evidence": [
+      "RenegadeVR Tools\\thermal-system-2026-10-23\\open-channel-deployment-backup-20261024-142532\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\thermal-system-2026-10-23\\open-channel-deployment-backup-20261024-142532\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 26,
+    "sha256": "a67243cb2b7688b516367292517ea001fa0e96684b6e36d64966d1e8cc26648c",
+    "evidence": [
+      "RenegadeVR Tools\\rtcW-controls-2026-10-24\\install-backup-20261024-175313\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\rtcW-controls-2026-10-24\\install-backup-20261024-175313\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 27,
+    "sha256": "cf4af9dc4363c1db4bd6d3a3bd5516849ed3c9a084e9a497b100df2b9e9eae8d",
+    "evidence": [
+      "RenegadeVR Tools\\vr-integration-2026-10-24\\install-backup-20261025-040459\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\vr-integration-2026-10-24\\install-backup-20261025-040459\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 28,
+    "sha256": "fa10fc99b3d1300b535db22cec6c8000ad8177bae66a745c0bf88d17f1168598",
+    "evidence": [
+      "RenegadeVR Tools\\vr-handling-2026-10-25\\install-backup-20261025-153328\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\vr-handling-2026-10-25\\install-backup-20261025-153328\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 29,
+    "sha256": "bbf2e3e422da097a12597c3a97fa523aab7ba98995c9255370824b1d28926cb8",
+    "evidence": [
+      "RenegadeVR Tools\\command-music-2026-10-25\\install-backup-20261025-211802\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\command-music-2026-10-25\\install-backup-20261025-211802\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 30,
+    "sha256": "426730f8ebeba15923c4b350182f4cd0c7e838aebc62176b7c71a89941cb4739",
+    "evidence": [
+      "RenegadeVR Tools\\vr-wheel-2026-10-25\\install-backup-20261025-214404\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\vr-wheel-2026-10-25\\install-backup-20261025-214404\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 31,
+    "sha256": "f855f02ad8598a50596848c2b02f5a7f2dd4a8748c91317efbe39e9f09fb0c4b",
+    "evidence": [
+      "RenegadeVR Tools\\faction-rifles-2026-10-26\\install-backup-20261026-135052\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\faction-rifles-2026-10-26\\install-backup-20261026-135052\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 32,
+    "sha256": "f1bcd3454398432bf11296ec0f4941d1a0f17515e2c60302bb3e569cff54b0b1",
+    "evidence": [
+      "RenegadeVR Tools\\flatscreen-weapons-2026-10-26\\install-backup-20261026-153255\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\flatscreen-weapons-2026-10-26\\install-backup-20261026-153255\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 33,
+    "sha256": "fc6aca346a1285e5e1874b246f789257153b1aa634d679816f74b3f01acb3786",
+    "evidence": [
+      "RenegadeVR Tools\\authored-reloads-2026-10-26\\install-backup-20261026-175308\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\authored-reloads-2026-10-26\\install-backup-20261026-175308\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 34,
+    "sha256": "f36d3958aafdd67251df3363112202725f0fdaaf3c785fe2309bede1a751caed",
+    "evidence": [
+      "RenegadeVR Tools\\reference-reloads-2026-10-26\\install-backup-20261026-230753\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\reference-reloads-2026-10-26\\install-backup-20261026-230753\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 35,
+    "sha256": "66fcb9646eb7f1f1fe7b38a5257d503c2d59a1a03bade826cb4c2bbdbb5f00e7",
+    "evidence": [
+      "RenegadeVR Tools\\source-rifles-2026-10-26\\install-backup-20261027-004833\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\source-rifles-2026-10-26\\install-backup-20261027-004833\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 36,
+    "sha256": "bf598833ae79287b65f32bbdb8b8ce871d7be7f094c32d941483425365f0c647",
+    "evidence": [
+      "RenegadeVR Tools\\command-performance-2026-10-28\\install-backup-20261028-085803\\RenegadeVR Test\\Renegade.exe",
+      "RenegadeVR Tools\\command-performance-2026-10-28\\install-backup-20261028-085803\\Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 37,
+    "sha256": "33c71edd09c9b63df717e31035f25286fece3dca4271ba1c26c15da42fbd92d5",
+    "evidence": [
+      "RenegadeVR Test\\Voxel-backup-20261104-095023\\Renegade.exe",
+      "RenegadeVR Tools\\vr-controls-audit-20261116-233832\\Voxel-backup-20261104-095023\\Renegade.exe",
+      "Renegade\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 38,
+    "sha256": "02c0b6dedbe5acc37a021fbb967b8a103863180b7d47e2ad01cf5e8768e214a6",
+    "evidence": [
+      "RenegadeVR Test\\Headfix-backup-20261104-142908\\Renegade.exe",
+      "RenegadeVR Tools\\vr-controls-audit-20261116-233832\\Headfix-backup-20261104-142908\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 39,
+    "sha256": "4b37eeec7beb6e6c6c4a412e60d198b8ec140e49a0442eecf4cea494ef310893",
+    "evidence": [
+      "RenegadeVR Test\\Render-fix-backup-20261105-083923\\Renegade.exe",
+      "RenegadeVR Tools\\vr-controls-audit-20261116-233832\\Render-fix-backup-20261105-083923\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 40,
+    "sha256": "b3b836349124e1ba387f45ee6bef0579cec0d99db07fdabcd560e09005e69aa3",
+    "evidence": [
+      "RenegadeVR Test\\Thigh-fix-backup-20261106-084032\\Renegade.exe",
+      "RenegadeVR Tools\\vr-controls-audit-20261116-233832\\Thigh-fix-backup-20261106-084032\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 41,
+    "sha256": "584dca2722ee2427b609370d070d2642540b9522a3d58931de758b6c9cd20636",
+    "evidence": [
+      "RenegadeVR Test\\Blood-soak-backup-20261106-101120\\Renegade.exe",
+      "RenegadeVR Tools\\vr-controls-audit-20261116-233832\\Blood-soak-backup-20261106-101120\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 42,
+    "sha256": "8db9146b5b63d725edd833978b7eec3b3adf878cd3f484d3721adac6c02b9dd1",
+    "evidence": [
+      "RenegadeVR Test\\Perf-thigh-backup-20261106-113350\\Renegade.exe",
+      "RenegadeVR Tools\\vr-controls-audit-20261116-233832\\Perf-thigh-backup-20261106-113350\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 43,
+    "sha256": "f480b003b6464e793982c5ebb8ffdded1d933d1be4697c5cbad5aab268777d70",
+    "evidence": [
+      "RenegadeVR Test\\Corpse-burst-backup-20261106-144402\\Renegade.exe",
+      "RenegadeVR Tools\\vr-controls-audit-20261116-233832\\Corpse-burst-backup-20261106-144402\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 44,
+    "sha256": "1fbd73a86c623393dd363c29b98ed557eab60e79c77e48ad0dbe7ceb926ba5d7",
+    "evidence": [
+      "RenegadeVR Test\\Wound-budget-backup-20261106-211915\\Renegade.exe",
+      "RenegadeVR Tools\\vr-controls-audit-20261116-233832\\Wound-budget-backup-20261106-211915\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 45,
+    "sha256": "ec4bf7f4167a8f91b5fc080a375abaf35c3bade6ed59d36fad0c85936a34d757",
+    "evidence": [
+      "RenegadeVR Test\\Voxel-backup-blast-burn-20261107-001225\\Renegade.exe",
+      "RenegadeVR Tools\\vr-controls-audit-20261116-233832\\Voxel-backup-blast-burn-20261107-001225\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 46,
+    "sha256": "693efd5ecbbff5e92189e5cd8e2538ee8325b73927ccac4fd95b17760d430d37",
+    "evidence": [
+      "RenegadeVR Test\\Voxel-backup-splash-fire-20261108-132711\\Renegade.exe",
+      "RenegadeVR Tools\\vr-controls-audit-20261116-233832\\Voxel-backup-splash-fire-20261108-132711\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 47,
+    "sha256": "fc8a04e2f70bfdf9cb9e82c848b6594907315befce37d30d1c0964c466f6dba0",
+    "evidence": [
+      "RenegadeVR Test\\Backup-eva-arms-20261113-005728\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 48,
+    "sha256": "eac6d3eed7a7870e32cfa958505116caed1797b50b43a4666d928ed3226e6192",
+    "evidence": [
+      "RenegadeVR Test\\Backup-vr-wheel-20261116-183004\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 49,
+    "sha256": "b15baf57233262f42d096816827fea509f026f4b05f053cfcda713bef2fc2ffe",
+    "evidence": [
+      "RenegadeVR Test\\Backup-vr-controls-20261116-235012\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 50,
+    "sha256": "31630d587c00dbc5f7cbc5832f97db84c3bbb77e4167c459a31dd520110e6097",
+    "evidence": [
+      "RenegadeVR Test\\Backup-vr-compass-voxel-20261117-010022\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 51,
+    "sha256": "7035ccd104d7bb08a89da5b56b719b49b33e4e18b80536cd76e07a3e1b33cbfd",
+    "evidence": [
+      "RenegadeVR Test\\Backup-vr-wrist-c4-20261117-040121\\Renegade.exe"
+    ]
+  },
+  {
+    "iteration": 52,
+    "sha256": "26d97c6f6aeede725486427cdc6ea9abef606896ed4c978e07b6c06824aa196f",
+    "evidence": [
+      "RenegadeVR Test\\Renegade.exe"
+    ]
+  }
+]
