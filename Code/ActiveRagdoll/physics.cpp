@@ -123,6 +123,33 @@ inline float Rad( float deg ) {
 	return deg * ( JPH_PI / 180.0f );
 }
 
+// The RealRTCW caller supplies its own initial-overlap mask. Renegade's generic
+// bridge builds the equivalent mask for capsule parts when none was supplied.
+float SegmentDistanceSquared(const physPart_t &first, const physPart_t &second) {
+	Vec3 a = ToJolt(first.a), b = ToJolt(second.a);
+	Vec3 u = ToJolt(first.b) - a, v = ToJolt(second.b) - b, delta = a - b;
+	float uu = u.Dot(u), vv = v.Dot(v), uv = u.Dot(v);
+	float du = u.Dot(delta), dv = v.Dot(delta), s = 0, t = 0;
+	if (uu <= 1e-8f && vv <= 1e-8f) return delta.LengthSq();
+	if (uu <= 1e-8f) {
+		t = Clamp(dv / vv, 0.0f, 1.0f);
+	} else if (vv <= 1e-8f) {
+		s = Clamp(-du / uu, 0.0f, 1.0f);
+	} else {
+		float denominator = uu * vv - uv * uv;
+		if (denominator > 1e-8f) s = Clamp((uv * dv - du * vv) / denominator, 0.0f, 1.0f);
+		t = (uv * s + dv) / vv;
+		if (t < 0) {
+			t = 0;
+			s = Clamp(-du / uu, 0.0f, 1.0f);
+		} else if (t > 1) {
+			t = 1;
+			s = Clamp((uv - du) / uu, 0.0f, 1.0f);
+		}
+	}
+	return (delta + s * u - t * v).LengthSq();
+}
+
 // a unit vector square to d, as close to want as possible
 Vec3 Square( Vec3Arg d, Vec3Arg want ) {
 	Vec3 p = want - d * d.Dot( want );
@@ -650,7 +677,12 @@ int Phys_CreateRagdoll( const physPart_t *parts, int numParts, const unsigned ch
 			rd->group->DisableCollision( i, parts[i].parent );
 		}
 		for ( j = i + 1; j < numParts; j++ ) {
-			if ( noCollide && noCollide[i * numParts + j] ) {
+			bool overlap = noCollide && noCollide[i * numParts + j];
+			if (!noCollide && parts[i].shape == PHYS_SHAPE_CAPSULE && parts[j].shape == PHYS_SHAPE_CAPSULE) {
+				float radius = (parts[i].radius + parts[j].radius) * PHYS_SCALE;
+				overlap = SegmentDistanceSquared(parts[i], parts[j]) < radius * radius;
+			}
+			if ( overlap ) {
 				rd->inside[i][j] = rd->inside[j][i] = 1;
 			}
 		}
@@ -677,7 +709,8 @@ int Phys_CreateRagdoll( const physPart_t *parts, int numParts, const unsigned ch
 			rot[i] = len > 1e-4f ? Quat::sFromTo( Vec3::sAxisY(), d / len ) : Quat::sIdentity();
 		}
 		BodyCreationSettings bcs( shape, RVec3( centre ), rot[i], EMotionType::Dynamic, LAYER_BODY );
-		bcs.mCollisionGroup = CollisionGroup( rd->group, (CollisionGroup::GroupID)h, (CollisionGroup::SubGroupID)i );
+		// Contact listener and public handles both identify pool slots from one.
+		bcs.mCollisionGroup = CollisionGroup( rd->group, (CollisionGroup::GroupID)(h + 1), (CollisionGroup::SubGroupID)i );
 		bcs.mMotionQuality = EMotionQuality::LinearCast;     // small fast parts don't tunnel through thin walls
 		bcs.mFriction = 0.8f;
 		bcs.mRestitution = 0.0f;

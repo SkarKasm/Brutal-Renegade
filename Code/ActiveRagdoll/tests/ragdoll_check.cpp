@@ -116,6 +116,29 @@ int main() {
     Check(bend > .3f && bend < .9f, "joint motor physically follows the animation target");
     world.Clear();
 
+    // An animation can put one arm through the other before physics takes over.
+    // Those initial overlaps must separate naturally, without a solver kick.
+    std::array<physPart_t, 3> folded{};
+    parts = Parts();
+    folded[0] = parts[0];
+    folded[1] = folded[2] = parts[1];
+    for (auto &part : folded) { part.a[2] += 10; part.b[2] += 10; }
+    for (int i = 1; i < 3; ++i) {
+        folded[i].parent = 0;
+        folded[i].joint = PHYS_JOINT_NONE;
+        folded[i].a[0] = folded[i].b[0] = 1;
+    }
+    const auto overlap = world.Create(folded.data(), 3);
+    world.Advance(1.f/60.f);
+    world.Pose(overlap, pos.data(), axes.data());
+    float separationSquared = 0;
+    for (int axis = 0; axis < 3; ++axis) {
+        const float delta = pos[3+axis]-pos[6+axis];
+        separationSquared += delta*delta;
+    }
+    Check(separationSquared < .0001f, "initial folded-limb overlap avoids an explosive separation impulse");
+    world.Clear();
+
     std::array<World::Handle, World::MaxBodies> handles{};
     for (int i = 0; i < World::MaxBodies; ++i) {
         parts = Parts(static_cast<float>(i));

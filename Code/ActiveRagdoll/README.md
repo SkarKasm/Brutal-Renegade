@@ -5,6 +5,7 @@ The shared Renegade character simulation now has an experimental Jolt path for d
 ## Current scope
 
 - Reuses Brutally RealRTCW VR's cg_physics.cpp/.h bridge and bundled Jolt 5.6.0. The bridge's world scale changes from inches to metres. Jolt's MIT licence is retained under third_party/JoltPhysics/LICENSE.
+- Automatically suppresses capsule pairs overlapping in the initial animation until they separate. Collision groups use the same one-based pool indices as the contact listener, so suppression applies to the correct corpse.
 - Maps eleven capsule segments to the human C PELVIS, spine, head, arm and leg bones, initialized from the current pose. Stores each bone's offset from its physical capsule so the original skin follows its own skeleton.
 - Joint motors follow death animation targets and fade over 0 to 2.6 seconds according to the hit region. Headshots go limp immediately. Hits add local velocity and temporarily suppress the struck joint's motor.
 - Fixed 120 Hz stepping, at most eight catch-up steps, 32 corpse slots, and ten actively driven bodies. Extra corpses retain native presentation when the pool is full. Handles carry generations. Destruction and level unload release the associated bodies and bone controls.
