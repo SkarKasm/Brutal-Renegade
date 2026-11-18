@@ -1,0 +1,33 @@
+cmake_minimum_required(VERSION 3.20)
+project(BrutalRenegadeRagdolls LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+
+# Use the same Jolt tree as Brutally RealRTCW, without GPU backends.
+set(JOLT_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/third_party/JoltPhysics")
+file(GLOB_RECURSE JOLT_SOURCES CONFIGURE_DEPENDS "${JOLT_ROOT}/Jolt/*.cpp")
+list(FILTER JOLT_SOURCES EXCLUDE REGEX "/Compute/(DX12|VK|MTL)/")
+add_library(br_jolt STATIC ${JOLT_SOURCES})
+target_include_directories(br_jolt PUBLIC "${JOLT_ROOT}")
+target_compile_definitions(br_jolt PUBLIC NDEBUG)
+if(MSVC)
+    target_compile_options(br_jolt PRIVATE /O2 /W0 /EHsc /fp:precise)
+endif()
+
+add_library(br_active_ragdoll STATIC physics.cpp active_ragdoll.cpp)
+target_link_libraries(br_active_ragdoll PUBLIC br_jolt)
+target_include_directories(br_active_ragdoll PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
+target_compile_definitions(br_active_ragdoll PRIVATE USE_JOLT)
+if(MSVC)
+    target_compile_options(br_active_ragdoll PRIVATE /W4 /EHsc /fp:precise)
+endif()
+
+option(BR_BUILD_RAGDOLL_CHECK "Build the offline ragdoll checks" ON)
+if(BR_BUILD_RAGDOLL_CHECK)
+    enable_testing()
+    add_executable(ragdoll_check tests/ragdoll_check.cpp)
+    target_link_libraries(ragdoll_check PRIVATE br_active_ragdoll)
+    add_test(NAME ragdoll_check COMMAND ragdoll_check)
+endif()

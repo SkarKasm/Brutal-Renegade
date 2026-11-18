@@ -99,6 +99,7 @@
 #include "ffactory.h"
 #include "realcrc.h"
 #include "goremanager.h"
+#include "ragdollmanager.h"
 static void (*_OfflineRecruitHandler)(SoldierGameObj*,SoldierGameObj*)=NULL;
 void SoldierGameObj::Set_Recruit_Handler(void (*handler)(SoldierGameObj*,SoldierGameObj*)) {_OfflineRecruitHandler=handler;}
 
@@ -353,6 +354,7 @@ SoldierGameObj::SoldierGameObj() :
 //------------------------------------------------------------------------------------
 SoldierGameObj::~SoldierGameObj()
 {
+	RagdollManager::Remove(this);
 	if ( HealingEffect != NULL ) {
 		Peek_Human_Phys()->Remove_Effect_From_Me( HealingEffect );
 		REF_PTR_RELEASE( HealingEffect );
@@ -3640,6 +3642,7 @@ void	SoldierGameObj::Apply_Damage_Extended( const OffenseObjectClass & damager, 
 	// ambush multipliers, dialogue and the zero-health early-out below.
 	if (Get_Defense_Object()->Get_Health() <= 0.0f &&
 		(Get_State() == HumanStateClass::DEATH || Get_State() == HumanStateClass::DESTROY)) {
+        if (scale > 0.0f) RagdollManager::Damaged(this, damager, direction, collision_box_name, 0, 0);
 		if (GoreManager::Corpse_Hits_Enabled() && scale > 0.0f) {
 			GoreManager::Soldier_Damaged(this, damager, direction, collision_box_name,
 				scale, 0.0f, 0.0f);
@@ -3840,6 +3843,7 @@ void	SoldierGameObj::Apply_Damage_Extended( const OffenseObjectClass & damager, 
 		}
 	}
 
+    RagdollManager::Damaged(this, damager, direction, collision_box_name, health_before, health);
 	// RENEGADE_VR: cosmetic blood and dismemberment (no-op unless enabled, single player only)
 	GoreManager::Soldier_Damaged( this, damager, direction, collision_box_name,
 											gore_explosion_scale, health_before, health );

@@ -98,6 +98,7 @@
 #include "translatedb.h"
 #include "string_ids.h"
 #include "goremanager.h"
+#include "ragdollmanager.h"
 #include "stuckwatch.h"		// PORT
 
 
@@ -219,6 +220,7 @@ void	CombatManager::Init( bool render_available )
 void	CombatManager::Shutdown( void )
 {
 //	Debug_Say(("CombatManager::Shutdown\n"));
+	RagdollManager::Unload_Level();
 	GoreManager::Shutdown();		// RENEGADE_VR
 	ScreenFadeManager::Shutdown();
 	HUDClass::Shutdown();
@@ -533,6 +535,7 @@ void	CombatManager::Post_Load_Level( void )
 	Load_Terrain_Completion(_load_map_name);
 	UnitCoordinationZoneMgr::Build_Zones ();
 	GoreManager::Warm_Level_Skins();
+	RagdollManager::Load_Level();
 	return ;
 }
 
@@ -585,6 +588,7 @@ void	CombatManager::Unload_Level( void )
 	WWLOG_INTERMEDIATE("WeaponViewClass::Shutdown()");
 
 	_TerrainCompletionLoaded=false;_TerrainAuditStart=0;_TerrainAuditCapture=0;_GoreAuditCapture=0;
+	RagdollManager::Unload_Level();
 	GoreManager::Level_Unloaded();		// RENEGADE_VR: gibs and blood effects go with the level
 
 	GameObjManager::Shutdown();
@@ -735,6 +739,7 @@ void 	CombatManager::Think()
 	// Now, Post Process all objects logically
 }{	WWPROFILE( "Post Think" );
 	GameObjManager::Post_Think();
+	RagdollManager::Update(TimeManager::Get_Frame_Seconds());
 }
 	// In host_model mode, the camera must think after Post_Think, so the host model has
 	// a chance to determine where the camera should be

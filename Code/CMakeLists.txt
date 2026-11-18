@@ -83,6 +83,26 @@ target_sources(ww3d2 PRIVATE ww3d2/voxel_skin.cpp)
 set_source_files_properties(ww3d2/voxel_skin.cpp PROPERTIES COMPILE_OPTIONS "/std:c++17;/Zc:forScope")
 target_link_libraries(ww3d2 PUBLIC renegade_voxel)
 
+# Optional shared character physics; independent of headset rendering.
+option(BR_JOLT_RAGDOLLS "Build experimental Jolt character ragdolls" OFF)
+if(BR_JOLT_RAGDOLLS)
+    set(BR_BUILD_RAGDOLL_CHECK OFF CACHE BOOL "Build the offline ragdoll checks")
+    add_subdirectory(ActiveRagdoll)
+    target_sources(combat PRIVATE Combat/ragdollmanager.cpp)
+    target_compile_definitions(combat PUBLIC BR_JOLT_RAGDOLLS)
+    set_source_files_properties(Combat/ragdollmanager.cpp PROPERTIES
+        COMPILE_OPTIONS "/std:c++17;/Zc:forScope")
+    target_link_libraries(combat PUBLIC br_active_ragdoll)
+    add_executable(ragdoll_engine_check EXCLUDE_FROM_ALL ActiveRagdoll/tests/engine_binding_check.cpp
+        Tools/VoxelGore/headless_audio_stubs.cpp)
+    renegade_target(ragdoll_engine_check)
+    target_compile_features(ragdoll_engine_check PRIVATE cxx_std_17)
+    target_compile_options(ragdoll_engine_check PRIVATE /Zc:forScope)
+    target_link_libraries(ragdoll_engine_check PRIVATE br_active_ragdoll ww3d2 wwmath wwsaveload
+        wwlib wwdebug renegade_compat winmm vfw32)
+    target_link_options(ragdoll_engine_check PRIVATE /SAFESEH:NO /OPT:REF /OPT:ICF)
+endif()
+
 # SDKs that aren't in the tree (see compat/README.md)
 add_library(renegade_compat STATIC
 	Port/compat/d3dx8_compat.cpp
