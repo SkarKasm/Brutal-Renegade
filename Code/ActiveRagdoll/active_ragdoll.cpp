@@ -128,6 +128,17 @@ void World::SetTarget(Handle handle, const float *axes) {
     std::copy(axes, axes + body->count * 9, body->target.begin());
 }
 
+void World::BulletHit(Handle handle, int part, const float *direction, const float *point, float damage) {
+    if (!direction || !std::isfinite(damage) || damage <= 0) return;
+    const float length = std::sqrt(direction[0]*direction[0] + direction[1]*direction[1] + direction[2]*direction[2]);
+    if (!std::isfinite(length) || length <= .000001f) return;
+    // Local velocity change, independent of projectile speed and headshot damage
+    // multipliers. Joint constraints distribute the impact through the body.
+    const float speed = std::clamp(1.f + damage * .1f, 2.f, 5.f);
+    const float velocity[] = { direction[0]*speed/length, direction[1]*speed/length, direction[2]*speed/length };
+    Hit(handle, part, velocity, point);
+}
+
 void World::DisablePart(Handle handle, int part) {
     Body *body = Find(handle);
     if (!body || part < 0 || part >= body->count) return;

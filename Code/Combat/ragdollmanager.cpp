@@ -6,6 +6,7 @@
 #include "soldier.h"
 #include "combat.h"
 #include "gametype.h"
+#include "humanphys.h"
 #include "damage.h"
 #include "goremanager.h"
 #include "gameobjmanager.h"
@@ -124,12 +125,14 @@ Entry *Create(SoldierGameObj *soldier) {
     RenderObjClass *model = soldier->Peek_Model();
     if (!model || !model->Get_HTree()) return NULL;
     std::array<physPart_t, PartCount> parts{};
+    Vector3 inheritedVelocity;
+    soldier->Peek_Human_Phys()->Get_Velocity(&inheritedVelocity);
     for (int i = 0; i < PartCount; ++i) {
         const Segment &segment = segments[i];
         const int bone = model->Get_Bone_Index(segment.bone);
         const int tip = segment.tip ? model->Get_Bone_Index(segment.tip) : bone;
-        if (bone <= 0 || tip <= 0 || model->Is_Bone_Captured(bone)) {
-            Log("Ragdoll skipped: missing skeleton segment or existing bone controller.");
+        if (bone <= 0 || tip <= 0) {
+            Log("Ragdoll skipped: missing skeleton segment.");
             *entry = Entry{};
             return NULL;
         }
@@ -140,7 +143,10 @@ Entry *Create(SoldierGameObj *soldier) {
         physPart_t &part = parts[i];
         part.parent = segment.parent;
         part.shape = PHYS_SHAPE_CAPSULE;
-        for (int k = 0; k < 3; ++k) { part.a[k] = a[k]; part.b[k] = b[k]; part.pivot[k] = a[k]; }
+        for (int k = 0; k < 3; ++k) {
+            part.a[k] = a[k]; part.b[k] = b[k]; part.pivot[k] = a[k];
+            part.vel[k] = inheritedVelocity[k];
+        }
         part.radius = segment.radius;
         part.mass = segment.mass;
         part.joint = segment.parent < 0 ? PHYS_JOINT_NONE : PHYS_JOINT_SWINGTWIST;
@@ -183,6 +189,19 @@ int HitPart(const char *box) {
     if (strstr(box,"R CALF") || strstr(box,"R FOOT")) return 10;
     return 1;
 }
+}
+
+RagdollManager::BulletImpact *RagdollManager::CurrentImpact = NULL;
+
+RagdollManager::BulletImpact::BulletImpact(SoldierGameObj *victim, const OffenseObjectClass &damage,
+    const Vector3 &velocity, const Vector3 &contact)
+    : previous(CurrentImpact), soldier(victim), offense(&damage), consumed(false) {
+    for (int axis = 0; axis < 3; ++axis) { point[axis] = contact[axis]; direction[axis] = velocity[axis]; }
+    CurrentImpact = this;
+}
+
+RagdollManager::BulletImpact::~BulletImpact() {
+    CurrentImpact = previous;
 }
 
 void RagdollManager::Load_Level() {
@@ -251,11 +270,22 @@ void RagdollManager::Damaged(SoldierGameObj *soldier, const OffenseObjectClass &
         else if (box && (strstr(box,"ABDOMEN") || strstr(box,"PELVIS"))) region = HitRegion::Abdomen;
         world.BeginDeath(entry->handle, region, part);
     }
-    Vector3 velocity = direction;
-    if (velocity.Length2() > .000001f) velocity.Normalize();
-    velocity *= WWMath::Clamp(damage.Get_Damage() * .025f, .2f, 4.f);
-    const Vector3 point = entry->model->Get_Bone_Transform(entry->bones[part]).Get_Translation();
-    world.Hit(entry->handle, part, &velocity.X, &point.X);
+    BulletImpact *impact = CurrentImpact;
+    if (impact && !impact->consumed && impact->soldier == soldier && impact->offense == &damage) {
+        impact->consumed = true;
+        world.BulletHit(entry->handle, part, impact->direction, impact->point, damage.Get_Damage());
+        if (before > 0) Log("Applied killing projectile impulse at its surface contact.");
+    } else {
+        Vector3 velocity = direction;
+        if (velocity.Length2() > .000001f) velocity.Normalize();
+        const Vector3 point = entry->model->Get_Bone_Transform(entry->bones[part]).Get_Translation();
+        if (damage.ExplosionDamage) {
+            velocity *= WWMath::Clamp(damage.Get_Damage() * .025f, .2f, 4.f);
+            world.Hit(entry->handle, part, &velocity.X, &point.X);
+        } else {
+            world.BulletHit(entry->handle, part, &velocity.X, &point.X, damage.Get_Damage());
+        }
+    }
 }
 
 void RagdollManager::Update(float seconds) {

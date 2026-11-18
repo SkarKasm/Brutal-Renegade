@@ -36,6 +36,7 @@
 
 #include "bullet.h"
 #include "goremanager.h"
+#include "ragdollmanager.h"
 #include "projectile.h"
 #include "combat.h"	  // for collision groups (should be damage.h?)
 #include "pscene.h"
@@ -364,7 +365,10 @@ CollisionReactionType BulletDataClass::Bullet_Collision_Occurred( const Collisio
                 if(other->As_SoldierGameObj()) voxel_handled=GoreManager::Prepare_Voxel_Bullet(
                     other->As_SoldierGameObj(),offense,Velocity,collision_point,collision_normal,collided_obj_name,
                     AmmoDefinition->Get_ID(),AmmoDefinition->ExplosionDefID!=0);
-                other->Apply_Damage_Extended( offense, 1.0f, Velocity, collided_obj_name );
+                {
+                    RagdollManager::BulletImpact impact(other->As_SoldierGameObj(), offense, Velocity, collision_point);
+                    other->Apply_Damage_Extended( offense, 1.0f, Velocity, collided_obj_name );
+                }
                 if (other->As_SoldierGameObj() && !voxel_handled) {
                     GoreManager::Bullet_Hit(other->As_SoldierGameObj(), offense, Velocity,
                         collision_point, collision_normal, collided_obj_name, gore_was_dead);

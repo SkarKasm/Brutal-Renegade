@@ -29,6 +29,7 @@ public:
     void Remove(Handle handle);
     void BeginDeath(Handle handle, HitRegion region, int hitPart);
     void Hit(Handle handle, int part, const float *velocity, const float *point);
+    void BulletHit(Handle handle, int part, const float *direction, const float *point, float damage);
     void SetTarget(Handle handle, const float *worldAxes);
     void DisablePart(Handle handle, int part);
     void Advance(float seconds, bool paused = false);

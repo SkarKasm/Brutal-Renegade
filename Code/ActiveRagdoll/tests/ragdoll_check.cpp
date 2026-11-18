@@ -116,6 +116,32 @@ int main() {
     Check(bend > .3f && bend < .9f, "joint motor physically follows the animation target");
     world.Clear();
 
+    float displacement[4]{}, turn[4]{};
+    for (int shot = 0; shot < 4; ++shot) {
+        parts = Parts(6);
+        parts[0].a[2] += 10;
+        parts[0].b[2] += 10;
+        const auto victim = world.Create(parts.data(), 1);
+        world.BeginDeath(victim, HitRegion::Head, 0);
+        world.Pose(victim, pos.data(), axes.data());
+        const float initialX = pos[0];
+        const float shotDirection[] = {shot == 2 ? -400.f : 400.f, 0, 0};
+        const float contact[] = {6, shot == 1 || shot == 2 ? .08f : 0, 12.2f};
+        world.BulletHit(victim, 0, shotDirection, contact, shot == 3 ? 100000.f : 25.f);
+        world.Advance(1.f/60.f);
+        world.Pose(victim, pos.data(), axes.data());
+        displacement[shot] = pos[0]-initialX;
+        turn[shot] = axes[1];
+        world.Remove(victim);
+    }
+    Check(displacement[0] > .035f && displacement[1] > .035f && displacement[2] < -.035f,
+          "the killing bullet produces visible motion in its travel direction");
+    Check(std::fabs(turn[0]) < .001f && turn[1] < -.02f && turn[2] > .02f,
+          "surface contact adds torque and reversing the shot reverses the reaction");
+    Check(displacement[3] > displacement[0] && displacement[3] < .09f,
+          "large damage stays bounded instead of launching the corpse");
+    world.Clear();
+
     // An animation can put one arm through the other before physics takes over.
     // Those initial overlaps must separate naturally, without a solver kick.
     std::array<physPart_t, 3> folded{};

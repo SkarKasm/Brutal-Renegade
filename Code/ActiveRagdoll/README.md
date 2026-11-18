@@ -7,9 +7,9 @@ The shared Renegade character simulation now has an experimental Jolt path for d
 - Reuses Brutally RealRTCW VR's cg_physics.cpp/.h bridge and bundled Jolt 5.6.0. The bridge's world scale changes from inches to metres. Jolt's MIT licence is retained under third_party/JoltPhysics/LICENSE.
 - Automatically suppresses capsule pairs overlapping in the initial animation until they separate. Collision groups use the same one-based pool indices as the contact listener, so suppression applies to the correct corpse.
 - Maps eleven capsule segments to the human C PELVIS, spine, head, arm and leg bones, initialized from the current pose. Stores each bone's offset from its physical capsule so the original skin follows its own skeleton.
-- Joint motors follow death animation targets and fade over 0 to 2.6 seconds according to the hit region. Headshots go limp immediately. Hits add local velocity and temporarily suppress the struck joint's motor.
+- Joint motors follow death animation targets and fade over 0 to 2.6 seconds according to the hit region. Headshots go limp immediately. Hits add bounded local velocity at the projectile surface contact and temporarily suppress the struck joint's motor. The scoped bullet contact is consumed by its matching damage call, including the killing shot. New ragdolls inherit the soldier's current velocity.
 - Fixed 120 Hz stepping, at most eight catch-up steps, 32 corpse slots, and ten actively driven bodies. Extra corpses retain native presentation when the pool is full. Handles carry generations. Destruction and level unload release the associated bodies and bone controls.
-- Imports static physical terrain triangles on level load. An empty collision export disables the feature for that level. Missing bones or pre-existing bone controllers leave native presentation available.
+- Imports static physical terrain triangles on level load. An empty collision export disables the feature for that level. Missing bones leave native presentation available. Existing native animation bone captures are sampled before the death ragdoll takes over, rather than preventing ragdoll creation.
 - Single-player only, including the game's offline skirmish classification. Player-body IK is excluded. Chemical corpses retain their existing presentation.
 
 ## Build and enable
